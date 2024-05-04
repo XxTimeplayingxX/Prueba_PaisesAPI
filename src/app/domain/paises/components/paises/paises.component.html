@@ -1,0 +1,73 @@
+<div class="container">
+  <nav class="navbar">
+    <div class="container-fluid">
+      <form class="d-flex" role="search" [formGroup]="form">
+        <input
+          formControlName="countryToFind"
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          
+        />
+        <button
+          class="btn btn-outline-success"
+          type="submit"
+          (click)="getDataName()"
+        >
+          Search
+        </button>
+      </form>
+      <button class="btn btn-primary" (click)="getData()">
+        Mostrar Todos
+      </button>
+    </div>
+  </nav>
+  <div class="row">
+    @for (paises of pais; track paises; let i = $index) {
+    <div class="col mb-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="container text-center">
+            <img [src]="paises.flags.png" [alt]="paises.name" />
+          </div>
+          <hr />
+          <h4 class="text-center">{{ paises.name.common }}</h4>
+          <hr />
+          <div class="row text-center">
+            <div class="col">
+              <h3>Nombre Oficial</h3>
+              <p>{{ paises.name.official }}</p>
+            </div>
+            <div class="col">
+              <h3>Capital</h3>
+              <p>{{ paises.capital }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row text-center">
+            <div class="col">
+              <h3>Región</h3>
+              <p>{{ paises.region }}</p>
+            </div>
+            <div class="col">
+              <h3>Subregión</h3>
+              <p>{{ paises.subregion }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="container text-center">
+            <button
+              (click)="Favoritos(i)"
+              type="button"
+              class="btn btn-primary mb-2"
+            >
+              Agregar a Favoritos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
